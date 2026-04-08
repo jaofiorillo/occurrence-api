@@ -1,9 +1,18 @@
 package com.carbigdata_api.modules.cliente.model;
 
+import com.carbigdata_api.modules.cliente.dto.ClienteRequest;
+import lombok.*;
+
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "CLIENTE")
 public class Cliente {
 
@@ -22,6 +31,14 @@ public class Cliente {
     private String cpf;
 
     @Column(name = "DATA_CADASTRO", nullable = false)
-    private LocalDate dataCadastro;
+    private LocalDateTime dataCadastro;
 
+    public static Cliente of(ClienteRequest request) {
+        return Cliente.builder()
+            .cpf(request.cpf())
+            .nome(request.nome())
+            .dataCadastro(LocalDateTime.now())
+            .dataNascimento(request.dataNascimento())
+            .build();
+    }
 }

@@ -5,6 +5,7 @@ import com.carbigdata_api.modules.endereco.model.Endereco;
 import com.carbigdata_api.modules.ocorrencia.enums.EStatusOcorrencia;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "OCORRENCIA")
@@ -24,6 +25,9 @@ public class Ocorrencia {
         foreignKey = @ForeignKey(name = "FK_ENDERECO_OCORRENCIA"))
     @ManyToOne(fetch = FetchType.LAZY)
     private Endereco endereco;
+
+    @Column(name = "DATA_OCORRENCIA", nullable = false)
+    private LocalDateTime dataOcorrencia;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS_OCORRENCIA", nullable = false)
