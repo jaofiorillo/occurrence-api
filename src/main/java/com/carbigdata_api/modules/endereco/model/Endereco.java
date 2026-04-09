@@ -11,27 +11,27 @@ import jakarta.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ENDERECO")
+@Table(name = "endereco")
 public class Endereco {
 
     @Id
-    @SequenceGenerator(name = "SEQ_ENDERECO", sequenceName = "SEQ_ENDERECO", allocationSize = 1)
-    @GeneratedValue(generator = "SEQ_ENDERECO", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_endereco", sequenceName = "seq_endereco", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
     private Integer id;
 
-    @Column(name = "LOGRADOURO", nullable = false)
+    @Column(name = "logradouro", nullable = false)
     private String logradouro;
 
-    @Column(name = "CEP", nullable = false)
+    @Column(name = "cep", nullable = false)
     private String cep;
 
-    @Column(name = "BAIRRO", nullable = false)
+    @Column(name = "bairro", nullable = false)
     private String bairro;
 
-    @Column(name = "CIDADE", nullable = false)
+    @Column(name = "cidade", nullable = false)
     private String cidade;
 
-    @Column(name = "ESTADO", nullable = false)
+    @Column(name = "estado", nullable = false)
     private String estado;
 
     public static Endereco of(EnderecoRequest request) {

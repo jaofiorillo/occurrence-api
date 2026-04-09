@@ -4,26 +4,25 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "FOTO_OCORRENCIA")
+@Table(name = "foto_ocorrencia")
 public class FotoOcorrencia {
 
     @Id
-    @SequenceGenerator(name = "SEQ_OCORRENCIA", sequenceName = "SEQ_OCORRENCIA", allocationSize = 1)
-    @GeneratedValue(generator = "SEQ_OCORRENCIA", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_foto_ocorrencia", sequenceName = "seq_foto_ocorrencia", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_foto_ocorrencia")
     private Integer id;
 
-    @JoinColumn(name = "FK_OCORRENCIA", referencedColumnName = "ID",
-        foreignKey = @ForeignKey(name = "FK_FOTO_OCORRENCIA"))
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "fk_ocorrencia", foreignKey = @ForeignKey(name = "fk_foto_ocorrencia"), nullable = false)
     private Ocorrencia ocorrencia;
 
-    @Column(name = "DATA_CADASTRO", nullable = false)
+    @Column(name = "data_cadastro", nullable = false)
     private LocalDate dataCadastro;
 
-    @Column(name = "DSC_PATH_BUCKET", nullable = false)
+    @Column(name = "dsc_path_bucket", nullable = false)
     private String dscPathBucket;
 
-    @Column(name = "DSC_HASH", nullable = false)
+    @Column(name = "dsc_hash", nullable = false)
     private String dscHash;
 
 }

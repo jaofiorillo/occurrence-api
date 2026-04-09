@@ -8,29 +8,29 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "OCORRENCIA")
+@Table(name = "ocorrencia")
 public class Ocorrencia {
 
     @Id
-    @SequenceGenerator(name = "SEQ_OCORRENCIA", sequenceName = "SEQ_OCORRENCIA", allocationSize = 1)
-    @GeneratedValue(generator = "SEQ_OCORRENCIA", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_ocorrencia", sequenceName = "seq_ocorrencia", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_ocorrencia")
     private Integer id;
 
-    @JoinColumn(name = "FK_CLIENTE", referencedColumnName = "ID",
-        foreignKey = @ForeignKey(name = "FK_CLIENTE_OCORRENCIA"))
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_cliente", referencedColumnName = "id",
+        foreignKey = @ForeignKey(name = "fk_ocorrencia_cliente"))
     private Cliente cliente;
 
-    @JoinColumn(name = "FK_ENDERECO", referencedColumnName = "ID",
-        foreignKey = @ForeignKey(name = "FK_ENDERECO_OCORRENCIA"))
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_endereco", referencedColumnName = "id",
+        foreignKey = @ForeignKey(name = "fk_ocorrencia_endereco"))
     private Endereco endereco;
 
-    @Column(name = "DATA_OCORRENCIA", nullable = false)
+    @Column(name = "data_ocorrencia", nullable = false)
     private LocalDateTime dataOcorrencia;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "STATUS_OCORRENCIA", nullable = false)
+    @Column(name = "status_ocorrencia", nullable = false)
     private EStatusOcorrencia statusOcorrencia;
 
 }

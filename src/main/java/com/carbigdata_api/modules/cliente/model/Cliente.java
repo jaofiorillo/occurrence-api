@@ -13,24 +13,24 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CLIENTE")
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
-    @SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE", allocationSize = 1)
-    @GeneratedValue(generator = "SEQ_CLIENTE", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_cliente", sequenceName = "seq_cliente", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cliente")
     private Integer id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "DATA_NASCIMENTO", nullable = false)
+    @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(name = "CPF", nullable = false, length = 14)
+    @Column(name = "CPF", nullable = false, length = 12)
     private String cpf;
 
-    @Column(name = "DATA_CADASTRO", nullable = false)
+    @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dataCadastro;
 
     public static Cliente of(ClienteRequest request) {
