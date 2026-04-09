@@ -41,7 +41,7 @@ CREATE TABLE ocorrencia
 );
 
 -- TABELA FOTO OCORRENCIA
-CREATE SEQUENCE seq_foto_ocorrencia;
+CREATE SEQUENCE seq_foto_ocorrencia START WITH 1 INCREMENT BY 1;
 CREATE TABLE foto_ocorrencia
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('seq_foto_ocorrencia'),
