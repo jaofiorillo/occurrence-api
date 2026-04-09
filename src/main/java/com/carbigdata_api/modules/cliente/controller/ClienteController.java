@@ -31,7 +31,7 @@ public class ClienteController implements IClienteController {
     }
 
     @Override
-    public List<ClienteResponse> buscarTodosCliente() {
+    public List<ClienteResponse> buscarTodosClientes() {
         return clienteService.buscarTodosClientes();
     }
 }

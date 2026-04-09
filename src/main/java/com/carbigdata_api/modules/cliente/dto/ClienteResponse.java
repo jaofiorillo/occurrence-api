@@ -7,10 +7,14 @@ import java.time.LocalDate;
 
 public record ClienteResponse(Integer id,
                               String nome,
-                              @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataNascimento,
-                              String cpf) {
+                              String cpf,
+                              @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataNascimento) {
 
     public static ClienteResponse of(Cliente cliente) {
-        return new ClienteResponse(cliente.getId(), cliente.getNome(), cliente.getDataNascimento(), cliente.getCpf());
+        return new ClienteResponse(
+            cliente.getId(),
+            cliente.getNome(),
+            cliente.getCpf(),
+            cliente.getDataNascimento());
     }
 }

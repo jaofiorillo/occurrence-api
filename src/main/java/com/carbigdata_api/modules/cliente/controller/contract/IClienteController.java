@@ -41,5 +41,5 @@ public interface IClienteController {
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
     })
     @Operation(summary = "Endpoint para busca de clientes")
-    List<ClienteResponse> buscarTodosCliente();
+    List<ClienteResponse> buscarTodosClientes();
 }
