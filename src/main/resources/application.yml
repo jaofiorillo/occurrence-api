@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: carbigdata-api
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:carbigdata}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+minio:
+  url: http://${MINIO_HOST:localhost}:${MINIO_PORT:9000}
+  access-key: ${MINIO_USER:admin}
+  secret-key: ${MINIO_PASSWORD:admin123}
+  bucket: ${MINIO_BUCKET:fotos}
