@@ -41,4 +41,10 @@ public class Cliente {
             .dataNascimento(request.dataNascimento())
             .build();
     }
+
+    public void editarCliente(ClienteRequest request) {
+        this.cpf = request.cpf();
+        this.nome = request.nome();
+        this.dataNascimento = request.dataNascimento();
+    }
 }
