@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 public record ClienteRequest(
+    @NotBlank @Size(max = 255) String email,
+    @NotBlank @Size(max = 255) String senha,
     @NotBlank @Size(max = 255) String nome,
     @NotNull @JsonFormat(pattern = "dd/MM/yyyy") LocalDate dataNascimento,
     @NotBlank @Size(max = 14) String cpf) {

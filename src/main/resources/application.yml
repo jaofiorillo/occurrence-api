@@ -16,6 +16,11 @@ spring:
     enabled: true
     locations: classpath:db/migration
 
+  project:
+    app:
+      jwtSecret: ${JWT_SECRET:kPZc5YyJkHz2AxuNq3LxRvqGnJqM9sB0dXjHg7qF9CM=}
+      jwtExpirationMs: 600000000000
+
 minio:
   url: http://${MINIO_HOST:localhost}:${MINIO_PORT:9000}
   access-key: ${MINIO_USER:admin}

@@ -28,6 +28,11 @@ spring:
   flyway:
     enabled: false
 
+project:
+  app:
+    jwtSecret: ${JWT_SECRET:kPZc5YyJkHz2AxuNq3LxRvqGnJqM9sB0dXjHg7qF9CM=}
+    jwtExpirationMs: 600000000000
+
 server:
   port: 8081
 

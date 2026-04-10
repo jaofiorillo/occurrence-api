@@ -24,6 +24,13 @@ public class Cliente {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "senha", nullable = false)
+    private String senha;
+
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
@@ -37,6 +44,8 @@ public class Cliente {
         return Cliente.builder()
             .cpf(request.cpf())
             .nome(request.nome())
+            .email(request.email())
+            .senha(request.senha())
             .dataCadastro(LocalDateTime.now())
             .dataNascimento(request.dataNascimento())
             .build();

@@ -9,6 +9,7 @@ import com.carbigdata_api.modules.cliente.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,11 +17,13 @@ import org.springframework.stereotype.Service;
 public class ClienteService {
 
     private final ClienteRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     public void salvarCliente(ClienteRequest request) {
         var cliente = Cliente.of(request);
         validarCpfExistente(cliente.getCpf());
 
+        cliente.setSenha(passwordEncoder.encode(request.senha()));
         repository.save(cliente);
     }
 

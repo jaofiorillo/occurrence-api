@@ -3,10 +3,12 @@ CREATE SEQUENCE seq_cliente START WITH 1 INCREMENT BY 1;
 CREATE TABLE cliente
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('seq_cliente'),
-    nome            VARCHAR(255),
-    data_nascimento DATE        NOT NULL,
-    cpf             VARCHAR(14) NOT NULL UNIQUE,
-    data_cadastro   TIMESTAMP   NOT NULL
+    email           VARCHAR(255) NOT NULL,
+    senha           VARCHAR(255) NOT NULL,
+    nome            VARCHAR(255) NOT NULL,
+    data_nascimento DATE         NOT NULL,
+    cpf             VARCHAR(14)  NOT NULL UNIQUE,
+    data_cadastro   TIMESTAMP    NOT NULL
 );
 
 -- TABELA ENDERECO
