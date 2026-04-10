@@ -17,6 +17,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>,
 
     Optional<Cliente> findByCpfAndIdNot(String cpf, Integer id);
 
+    Optional<Cliente> findByEmailAndIdNot(String cpf, Integer id);
+
     Page<Cliente> findAll(Pageable pageable);
 }
 

@@ -24,7 +24,6 @@ public class Cliente {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-
     @Column(name = "email", nullable = false)
     private String email;
 

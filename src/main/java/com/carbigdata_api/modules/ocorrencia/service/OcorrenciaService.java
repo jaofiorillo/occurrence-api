@@ -1,5 +1,7 @@
 package com.carbigdata_api.modules.ocorrencia.service;
 
+import com.carbigdata_api.config.exceptions.NotFoundException;
+import com.carbigdata_api.config.exceptions.ValidationException;
 import com.carbigdata_api.modules.cliente.service.ClienteService;
 import com.carbigdata_api.modules.endereco.service.EnderecoService;
 import com.carbigdata_api.modules.minio.enums.ETipoArquivoPermitido;
@@ -52,7 +54,7 @@ public class OcorrenciaService {
                 .collect(Collectors.joining(", "));
 
             if (isNotEmpty(arquivosNaoPermitidos)) {
-                throw new RuntimeException("Os seguintes arquivos não são permitidos: " + arquivosNaoPermitidos);
+                throw new ValidationException("Os seguintes arquivos não são permitidos: " + arquivosNaoPermitidos);
             }
         }
     }
@@ -60,5 +62,17 @@ public class OcorrenciaService {
     public Page<OcorrenciaResponse> listarOcorrencias(Pageable pageable, OcorrenciaFiltros filtros) {
         return repository.findAllByPredicate(pageable, filtros.toPredicate().build())
             .map(OcorrenciaResponse::of);
+    }
+
+    public void finalizarOcorrencia(Integer id) {
+        var ocorrencia = findOcorrenciaById(id);
+        ocorrencia.finalizarOcorrencia();
+
+        repository.save(ocorrencia);
+    }
+
+    private Ocorrencia findOcorrenciaById(Integer id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new NotFoundException("Ocorrência não encontrada"));
     }
 }

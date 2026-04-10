@@ -3,7 +3,7 @@ CREATE SEQUENCE seq_cliente START WITH 1 INCREMENT BY 1;
 CREATE TABLE cliente
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('seq_cliente'),
-    email           VARCHAR(255) NOT NULL,
+    email           VARCHAR(255) NOT NULL UNIQUE,
     senha           VARCHAR(255) NOT NULL,
     nome            VARCHAR(255) NOT NULL,
     data_nascimento DATE         NOT NULL,

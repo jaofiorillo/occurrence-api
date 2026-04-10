@@ -7,6 +7,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,6 +40,9 @@ public class Ocorrencia {
     @Column(name = "status_ocorrencia", nullable = false)
     private EStatusOcorrencia statusOcorrencia;
 
+    @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<FotoOcorrencia> fotoOcorrencias;
+
     public static Ocorrencia of(Cliente cliente, Endereco endereco, EStatusOcorrencia statusOcorrencia) {
         return Ocorrencia.builder()
             .cliente(cliente)
@@ -46,5 +50,9 @@ public class Ocorrencia {
             .statusOcorrencia(statusOcorrencia)
             .dataOcorrencia(LocalDateTime.now())
             .build();
+    }
+
+    public void finalizarOcorrencia() {
+        this.statusOcorrencia = EStatusOcorrencia.FINALIZADA;
     }
 }

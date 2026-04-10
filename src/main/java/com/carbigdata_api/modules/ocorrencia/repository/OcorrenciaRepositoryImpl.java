@@ -15,7 +15,7 @@ import static com.carbigdata_api.modules.ocorrencia.model.QOcorrencia.ocorrencia
 
 @Repository
 @RequiredArgsConstructor
-public class OcorrenciaRepositoryImpl implements OcorrenciaRepositoryCustom{
+public class OcorrenciaRepositoryImpl implements OcorrenciaRepositoryCustom {
 
     private final EntityManager entityManager;
 
@@ -25,6 +25,7 @@ public class OcorrenciaRepositoryImpl implements OcorrenciaRepositoryCustom{
             .selectFrom(ocorrencia)
             .innerJoin(ocorrencia.cliente).fetchJoin()
             .innerJoin(ocorrencia.endereco).fetchJoin()
+            .innerJoin(ocorrencia.fotoOcorrencias).fetchJoin()
             .where(predicate)
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())

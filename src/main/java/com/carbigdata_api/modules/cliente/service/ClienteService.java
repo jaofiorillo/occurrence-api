@@ -22,6 +22,7 @@ public class ClienteService {
     public void salvarCliente(ClienteRequest request) {
         var cliente = Cliente.of(request);
         validarCpfExistente(cliente.getCpf());
+        validarEmailExistente(request.email());
 
         cliente.setSenha(passwordEncoder.encode(request.senha()));
         repository.save(cliente);
@@ -30,6 +31,7 @@ public class ClienteService {
     public void editarCliente(Integer id, ClienteRequest request) {
         var cliente = findClienteById(id);
         validarCpfExistenteParaEdicao(id, request.cpf());
+        validarEmailExistenteParaEdicao(id, request.email());
 
         cliente.editarCliente(request);
         repository.save(cliente);
@@ -46,9 +48,21 @@ public class ClienteService {
         });
     }
 
+    private void validarEmailExistente(String email) {
+        repository.findByEmail(email).ifPresent(cliente -> {
+            throw new ValidationException("Email existente");
+        });
+    }
+
     private void validarCpfExistenteParaEdicao(Integer id, String cpf) {
         repository.findByCpfAndIdNot(cpf, id).ifPresent(cliente -> {
             throw new ValidationException("Cpf existente");
+        });
+    }
+
+    private void validarEmailExistenteParaEdicao(Integer id, String email) {
+        repository.findByEmailAndIdNot(email, id).ifPresent(cliente -> {
+            throw new ValidationException("Email existente");
         });
     }
 

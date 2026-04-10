@@ -9,9 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -27,7 +25,7 @@ public interface IOcorrenciaController {
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO),
         @ApiResponse(responseCode = "400", description = CAMPO_OBG_N_INFORMADO)
     })
-    @Operation(summary = "Endpoint para cadastrar ocorrencias")
+    @Operation(summary = "Endpoint para cadastrar Ocorrência")
     void salvarOcorrencia(@RequestPart OcorrenciaRequest request, @RequestPart List<MultipartFile> fotosOcorrencia);
 
     @GetMapping
@@ -35,7 +33,15 @@ public interface IOcorrenciaController {
         @ApiResponse(responseCode = "200"),
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
     })
-    @Operation(summary = "Endpoint para cadastrar ocorrencias")
+    @Operation(summary = "Endpoint para cadastrar Ocorrências")
     Page<OcorrenciaResponse> listarOcorrencias(OcorrenciaFiltros filtros,
                                                @PageableDefault(sort = "id") Pageable pageable);
+
+    @PutMapping("{ocorrenciaId}")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200"),
+        @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
+    })
+    @Operation(summary = "Endpoint para finalizar Ocorrências")
+    void finalizarOcorrencia(@PathVariable Integer ocorrenciaId);
 }
