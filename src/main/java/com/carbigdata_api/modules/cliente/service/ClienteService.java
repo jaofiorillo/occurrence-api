@@ -8,10 +8,8 @@ import com.carbigdata_api.modules.cliente.model.Cliente;
 import com.carbigdata_api.modules.cliente.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,8 +32,8 @@ public class ClienteService {
         repository.save(cliente);
     }
 
-    public Page<ClienteResponse> buscarTodosClientes(PageRequest pageRequest) {
-        return repository.findAllByPredicate(pageRequest)
+    public Page<ClienteResponse> buscarTodosClientes(Pageable pageable) {
+        return repository.findAll(pageable)
             .map(ClienteResponse::of);
     }
 

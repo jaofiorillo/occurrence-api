@@ -7,10 +7,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static com.carbigdata_api.modules.common.Constantes.CAMPO_OBG_N_INFORMADO;
 import static com.carbigdata_api.modules.common.Constantes.DESCR_N_AUTORIZADO;
@@ -43,5 +42,5 @@ public interface IClienteController {
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
     })
     @Operation(summary = "Endpoint para busca de clientes")
-    Page<ClienteResponse> buscarTodosClientes(@RequestParam PageRequest pageRequest);
+    Page<ClienteResponse> buscarTodosClientes(@PageableDefault(sort = "id") Pageable pageable);
 }

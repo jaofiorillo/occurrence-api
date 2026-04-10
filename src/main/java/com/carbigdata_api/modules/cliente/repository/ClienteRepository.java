@@ -15,6 +15,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>,
 
     Optional<Cliente> findByCpfAndIdNot(String cpf, Integer id);
 
-    Page<Cliente> findAllByPredicate(Pageable pageable);
+    Page<Cliente> findAll(Pageable pageable);
 }
 

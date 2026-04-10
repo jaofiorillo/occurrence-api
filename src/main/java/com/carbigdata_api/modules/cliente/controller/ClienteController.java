@@ -6,8 +6,12 @@ import com.carbigdata_api.modules.cliente.dto.ClienteResponse;
 import com.carbigdata_api.modules.cliente.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 
@@ -29,7 +33,7 @@ public class ClienteController implements IClienteController {
     }
 
     @Override
-    public Page<ClienteResponse> buscarTodosClientes(@RequestParam PageRequest pageRequest) {
-        return clienteService.buscarTodosClientes(pageRequest);
+    public Page<ClienteResponse> buscarTodosClientes(@PageableDefault(sort = "id") Pageable pageable) {
+        return clienteService.buscarTodosClientes(pageable);
     }
 }
