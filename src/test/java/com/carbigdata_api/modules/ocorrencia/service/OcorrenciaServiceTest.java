@@ -7,7 +7,6 @@ import com.carbigdata_api.modules.cliente.service.ClienteService;
 import com.carbigdata_api.modules.endereco.model.Endereco;
 import com.carbigdata_api.modules.endereco.service.EnderecoService;
 import com.carbigdata_api.modules.ocorrencia.dto.OcorrenciaResponse;
-import com.carbigdata_api.modules.ocorrencia.enums.EStatusOcorrencia;
 import com.carbigdata_api.modules.ocorrencia.model.Ocorrencia;
 import com.carbigdata_api.modules.ocorrencia.repository.OcorrenciaRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -25,6 +24,7 @@ import java.util.Optional;
 
 import static com.carbigdata_api.modules.helper.TestHelper.*;
 import static com.carbigdata_api.modules.ocorrencia.enums.EStatusOcorrencia.ATIVA;
+import static com.carbigdata_api.modules.ocorrencia.enums.EStatusOcorrencia.FINALIZADA;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.groups.Tuple.tuple;
@@ -93,7 +93,7 @@ class OcorrenciaServiceTest {
 
         service.finalizarOcorrencia(1);
 
-        assertEquals(EStatusOcorrencia.FINALIZADA, ocorrencia.getStatusOcorrencia());
+        assertEquals(FINALIZADA, ocorrencia.getStatusOcorrencia());
         verify(repository).save(ocorrencia);
     }
 
