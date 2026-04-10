@@ -46,7 +46,7 @@ CREATE TABLE foto_ocorrencia
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('seq_foto_ocorrencia'),
     fk_ocorrencia   INTEGER      NOT NULL,
-    data_cadastro   DATE         NOT NULL,
+    data_cadastro   TIMESTAMP    NOT NULL,
     dsc_path_bucket VARCHAR(255) NOT NULL,
     dsc_hash        VARCHAR(255) NOT NULL,
 

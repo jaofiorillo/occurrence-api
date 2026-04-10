@@ -1,4 +1,4 @@
-package com.carbigdata_api.modules.common.exceptions;
+package com.carbigdata_api.config.exceptions;
 
 public class NotFoundException extends RuntimeException {
 

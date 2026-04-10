@@ -1,9 +1,16 @@
 package com.carbigdata_api.modules.ocorrencia.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDate;
+import lombok.*;
 
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "foto_ocorrencia")
 public class FotoOcorrencia {
 
@@ -17,12 +24,21 @@ public class FotoOcorrencia {
     private Ocorrencia ocorrencia;
 
     @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastro;
+    private LocalDateTime dataCadastro;
 
     @Column(name = "dsc_path_bucket", nullable = false)
     private String dscPathBucket;
 
     @Column(name = "dsc_hash", nullable = false)
     private String dscHash;
+
+    public static FotoOcorrencia of(String dscPathBucket, String dscHash, Ocorrencia ocorrencia) {
+        return FotoOcorrencia.builder()
+            .dscHash(dscHash)
+            .ocorrencia(ocorrencia)
+            .dscPathBucket(dscPathBucket)
+            .dataCadastro(LocalDateTime.now())
+            .build();
+    }
 
 }

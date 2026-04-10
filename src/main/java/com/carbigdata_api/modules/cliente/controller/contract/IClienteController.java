@@ -6,6 +6,8 @@ import com.carbigdata_api.modules.cliente.dto.ClienteResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +43,5 @@ public interface IClienteController {
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
     })
     @Operation(summary = "Endpoint para busca de clientes")
-    List<ClienteResponse> buscarTodosClientes();
+    Page<ClienteResponse> buscarTodosClientes(@RequestParam PageRequest pageRequest);
 }

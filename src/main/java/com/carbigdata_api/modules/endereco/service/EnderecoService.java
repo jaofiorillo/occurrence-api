@@ -1,5 +1,6 @@
 package com.carbigdata_api.modules.endereco.service;
 
+import com.carbigdata_api.config.exceptions.NotFoundException;
 import com.carbigdata_api.modules.endereco.dto.EnderecoRequest;
 import com.carbigdata_api.modules.endereco.dto.EnderecoResponse;
 import com.carbigdata_api.modules.endereco.model.Endereco;
@@ -27,5 +28,10 @@ public class EnderecoService {
         return repository.findAll().stream()
             .map(EnderecoResponse::of)
             .toList();
+    }
+
+    public Endereco getEnderecoById(Integer id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new NotFoundException("Endereço não encontrado"));
     }
  }
