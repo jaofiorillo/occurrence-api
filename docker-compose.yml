@@ -54,7 +54,8 @@ services:
       MINIO_USER: admin
       MINIO_PASSWORD: admin123
       MINIO_BUCKET: fotos
-      JWT_SECRET: kPZc5YyJkHz2AxuNq3LxRvqGnJqM9sB0dXjHg7qF9C
+      PROJECT_APP_JWTSECRET: YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTA=
+      PROJECT_APP_JWTEXPIRATIONMS: 1800000
     ports:
       - "8080:8080"
 

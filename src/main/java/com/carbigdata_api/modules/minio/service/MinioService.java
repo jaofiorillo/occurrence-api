@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.security.MessageDigest;
 import java.util.HexFormat;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -21,14 +20,12 @@ public class MinioService {
     @Value("${minio.bucket}")
     private String bucket;
 
-    public ObjectWriteResponse uploadArquivo(MultipartFile file) {
+    public ObjectWriteResponse uploadArquivo(MultipartFile file, String nomeArquivo) {
         try {
-            var fileName = UUID.randomUUID() + "-" + file.getOriginalFilename();
-
             return minioClient.putObject(
                 PutObjectArgs.builder()
                     .bucket(bucket)
-                    .object(fileName)
+                    .object(nomeArquivo)
                     .stream(file.getInputStream(), file.getSize(), -1)
                     .contentType(file.getContentType())
                     .build());

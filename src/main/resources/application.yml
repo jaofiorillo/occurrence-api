@@ -18,8 +18,8 @@ spring:
 
   project:
     app:
-      jwtSecret: ${JWT_SECRET:kPZc5YyJkHz2AxuNq3LxRvqGnJqM9sB0dXjHg7qF9CM=}
-      jwtExpirationMs: 600000000000
+      jwtSecret: ${JWT_SECRET:-kPZc5YyJkHz2AxuNq3LxRvqGnJqM9sB0dXjHg7qF9CM=}
+      jwtExpirationMs: ${JWT_EXPIRATION:-1800000}
 
 minio:
   url: http://${MINIO_HOST:localhost}:${MINIO_PORT:9000}

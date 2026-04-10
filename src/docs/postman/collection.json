@@ -1,0 +1,385 @@
+{
+  "info": {
+    "_postman_id": "e03b2872-6e0b-4089-979c-659890ad2861",
+    "name": "Carbigdata",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24853031"
+  },
+  "item": [
+    {
+      "name": "cliente",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"nome@gmail.com\",\n    \"senha\": \"123456\",\n    \"nome\": \"nome 2\",\n    \"cpf\": \"12345678911\",\n    \"dataNascimento\": \"20/09/2003\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/cliente",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "cliente"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTgzODk2NCwiZXhwIjoxNzc1ODQwNzY0fQ.VQsMc0V_1FCILWWaC0ojE1ni0qKUwqFW_hHqr6-mreo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/cliente",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "cliente"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "editar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"nome\": \"nome\",\n    \"cpf\": \"12345678911\",\n    \"dataNascimento\": \"20/09/2003\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/cliente/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "cliente",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Endereço",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTgzODk2NCwiZXhwIjoxNzc1ODQwNzY0fQ.VQsMc0V_1FCILWWaC0ojE1ni0qKUwqFW_hHqr6-mreo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logradouro\": \"Rua das Flores, 123\",\n  \"bairro\": \"Centro\",\n  \"cep\": \"01234-567\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/endereco",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "endereco"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTc5MzI1NSwiZXhwIjoyMzc1NzkzMjU1fQ.VAnhGFRaWAokFfj_4u0vDVQV9g-WqwxDmda2AShKdwI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/endereco",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "endereco"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ocorrencia",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTgzODk2NCwiZXhwIjoxNzc1ODQwNzY0fQ.VQsMc0V_1FCILWWaC0ojE1ni0qKUwqFW_hHqr6-mreo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "value": "{\"clienteId\": 1, \"enderecoId\": 1}",
+                  "type": "text",
+                  "uuid": "e984c2aa-5cc0-4a51-aadb-8ea338d5d338",
+                  "contentType": "application/json"
+                },
+                {
+                  "key": "fotosOcorrencia",
+                  "type": "file",
+                  "uuid": "9ab2f8c5-e813-44ff-86a0-bcfbfe1a0f1b",
+                  "src": "/Users/joaofiorillo/Downloads/WhatsApp Image 2026-02-10 at 10.56.19.jpeg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/ocorrencia",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ocorrencia"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "listar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTgzODk2NCwiZXhwIjoxNzc1ODQwNzY0fQ.VQsMc0V_1FCILWWaC0ojE1ni0qKUwqFW_hHqr6-mreo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/ocorrencia",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ocorrencia"
+              ],
+              "query": [
+                {
+                  "key": "nomeCliente",
+                  "value": "nome 2",
+                  "disabled": true
+                },
+                {
+                  "key": "cpfCliente",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "cidade",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "dataInicial",
+                  "value": "01/04/2026",
+                  "disabled": true
+                },
+                {
+                  "key": "dataFinal",
+                  "value": "09/04/2026",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Finalizar",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJub21lQGdtYWlsLmNvbSIsImlhdCI6MTc3NTgzODk2NCwiZXhwIjoxNzc1ODQwNzY0fQ.VQsMc0V_1FCILWWaC0ojE1ni0qKUwqFW_hHqr6-mreo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "value": "{\"clienteId\": 1, \"enderecoId\": 1}",
+                  "type": "text",
+                  "uuid": "e984c2aa-5cc0-4a51-aadb-8ea338d5d338"
+                },
+                {
+                  "key": "fotosOcorrencia",
+                  "type": "file",
+                  "uuid": "9ab2f8c5-e813-44ff-86a0-bcfbfe1a0f1b",
+                  "src": "/Users/joaofiorillo/Downloads/WhatsApp Image 2026-02-10 at 10.56.19.jpeg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/ocorrencia/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "ocorrencia",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "autenticacar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\":\"nome@gmail.com\",\n    \"senha\":\"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "nome@gmail.com",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "senha",
+                  "value": "123456",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

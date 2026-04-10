@@ -4,7 +4,7 @@ import com.carbigdata_api.config.exceptions.NotFoundException;
 import com.carbigdata_api.config.exceptions.ValidationException;
 import com.carbigdata_api.modules.cliente.service.ClienteService;
 import com.carbigdata_api.modules.endereco.service.EnderecoService;
-import com.carbigdata_api.modules.minio.enums.ETipoArquivoPermitido;
+import com.carbigdata_api.modules.minio.enums.ETipoArquivo;
 import com.carbigdata_api.modules.ocorrencia.dto.OcorrenciaFiltros;
 import com.carbigdata_api.modules.ocorrencia.dto.OcorrenciaRequest;
 import com.carbigdata_api.modules.ocorrencia.dto.OcorrenciaResponse;
@@ -49,7 +49,7 @@ public class OcorrenciaService {
     private void validarExtensaoArquivo(List<MultipartFile> fotosOcorrencia) {
         if (!isEmpty(fotosOcorrencia)) {
             var arquivosNaoPermitidos = fotosOcorrencia.stream()
-                .filter(file -> !ETipoArquivoPermitido.isPermitido(file.getContentType()))
+                .filter(file -> !ETipoArquivo.isPermitido(file.getContentType()))
                 .map(MultipartFile::getOriginalFilename)
                 .collect(Collectors.joining(", "));
 

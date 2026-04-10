@@ -33,6 +33,6 @@ public record OcorrenciaResponse(Integer id,
     private static List<String> preencherLinksFotoOcorrrencia(List<FotoOcorrencia> fotoOcorrencias) {
         return isNotEmpty(fotoOcorrencias)
             ? fotoOcorrencias.stream()
-            .map(FotoOcorrencia::getDscPathBucket).toList() : List.of();
+            .map(FotoOcorrencia::getDscHash).toList() : List.of();
     }
 }

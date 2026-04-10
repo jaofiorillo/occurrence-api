@@ -27,7 +27,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
         try {
-            if (request.getRequestURI().startsWith("/api/auth")) {
+            if (request.getRequestURI().startsWith("/api/auth/")) {
                 filterChain.doFilter(request, response);
                 return;
             }

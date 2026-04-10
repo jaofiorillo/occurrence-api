@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Getter
 @AllArgsConstructor
-public enum ETipoArquivoPermitido {
+public enum ETipoArquivo {
 
     PNG(".png", "image/png"),
     JPG(".jpg", "image/jpeg"),
@@ -18,7 +18,14 @@ public enum ETipoArquivoPermitido {
     private final String contentType;
 
     public static boolean isPermitido(String extensaoArquivo) {
-        return Arrays.stream(ETipoArquivoPermitido.values())
+        return Arrays.stream(ETipoArquivo.values())
             .anyMatch(tipoArquivoPermitido -> Objects.equals(tipoArquivoPermitido.contentType, extensaoArquivo));
+    }
+
+    public static ETipoArquivo buscarPorContentType(String contentType) {
+        return Arrays.stream(ETipoArquivo.values())
+            .filter(tipo -> tipo.getContentType().equalsIgnoreCase(contentType))
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException("Formato de arquivo não suportado: " + contentType));
     }
 }

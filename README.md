@@ -45,6 +45,7 @@ Para subir o ambiente completo (API + Banco + Storage), utilize os comandos abai
 
 ```bash
 docker compose down -v
+docker compose down                       
 ```
 
 2. **Subir os serviços em background com build:**
@@ -56,8 +57,13 @@ docker compose up -d --build
 3. **Rodar a aplicação com migrações e atualização de schema:**
 
 ```bash
+docker compose up --build --force-recreate ou
 docker compose run -e SPRING_FLYWAY_ENABLED=true -e SPRING_JPA_HIBERNATE_DDL_AUTO=update app
 ```
+
+## 📦 MinIO
+
+Acesse o painel do MinIO pelo link abaixo: 👉 http://localhost:9001
 
 ## Ambiente Local (H2)
 
@@ -67,9 +73,7 @@ docker compose run -e SPRING_FLYWAY_ENABLED=true -e SPRING_JPA_HIBERNATE_DDL_AUT
 
 ## 📩 Coleção de Requisições para Postman
 
-Para facilitar os testes, disponibilizei uma coleção de requisições para o Postman:
-
-🔗 [Acessar Coleção Postman](https://drive.google.com/drive/u/0/folders/1iDIz-24Cpil9AFxhEcY--cpb6GW6130v)
+**Importe a collection: (docs/postman/collection.json)**
 
 ## 💡 Minhas Implementações
 

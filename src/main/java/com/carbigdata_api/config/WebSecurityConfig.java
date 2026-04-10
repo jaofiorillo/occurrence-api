@@ -1,5 +1,6 @@
-package com.carbigdata_api.modules.auth;
+package com.carbigdata_api.config;
 
+import com.carbigdata_api.modules.auth.AuthTokenFilter;
 import com.carbigdata_api.modules.auth.jwt.AuthEntryPointJwt;
 import com.carbigdata_api.modules.auth.jwt.JwtUtils;
 import com.carbigdata_api.modules.auth.services.UserDetailsServiceImpl;

@@ -37,7 +37,7 @@ public interface IOcorrenciaController {
     Page<OcorrenciaResponse> listarOcorrencias(OcorrenciaFiltros filtros,
                                                @PageableDefault(sort = "id") Pageable pageable);
 
-    @PutMapping("{ocorrenciaId}")
+    @PutMapping("finalizar/{ocorrenciaId}")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200"),
         @ApiResponse(responseCode = "401", description = DESCR_N_AUTORIZADO)
