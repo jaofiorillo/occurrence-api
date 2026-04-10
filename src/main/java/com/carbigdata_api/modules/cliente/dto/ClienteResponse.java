@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public record ClienteResponse(Integer id,
                               String nome,
+                              String email,
                               String cpf,
                               @DateTimeFormat(pattern = "dd/MM/yyyy") LocalDate dataNascimento) {
 
@@ -14,6 +15,7 @@ public record ClienteResponse(Integer id,
         return new ClienteResponse(
             cliente.getId(),
             cliente.getNome(),
+            cliente.getEmail(),
             cliente.getCpf(),
             cliente.getDataNascimento());
     }
