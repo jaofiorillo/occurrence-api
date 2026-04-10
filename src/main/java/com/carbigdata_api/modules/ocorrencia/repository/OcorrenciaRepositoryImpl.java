@@ -32,6 +32,7 @@ public class OcorrenciaRepositoryImpl implements OcorrenciaRepositoryCustom{
 
         var total = new JPAQueryFactory(entityManager)
             .select(ocorrencia.id.count())
+            .from(ocorrencia)
             .where(predicate)
             .fetch().size();
 
