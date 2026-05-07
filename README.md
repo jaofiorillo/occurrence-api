@@ -1,4 +1,4 @@
-# CarBigData API
+# Occurrence-API
 
 Este projeto é uma API robusta desenvolvida com **Spring Boot** para o gerenciamento de ocorrências e clientes. A
 aplicação conta com segurança via JWT, persistência em PostgreSQL, integração com Storage de arquivos (MinIO) e filtros
